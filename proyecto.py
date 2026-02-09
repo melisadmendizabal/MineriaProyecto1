@@ -29,8 +29,29 @@ dataframes = {
     2021: df21, 2022: df22
 }
 
+df12.drop(columns=['AREAG', 'GETHOM', 'GETMUJ', 'OCUHOM', 'OCUMUJ'], inplace=True)
+df13.drop(columns=['AREAGOCU', 'CIUOHOM', 'CIUOMUJ', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df14.drop(columns=['AREAGOCU', 'CIUOHOM', 'CIUOMUJ', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df15.drop(columns=['AREAGOCU', 'CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df16.drop(columns=['AREAGOCU' ,'CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df17.drop(columns=['AREAGOCU','CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df18.drop(columns=['CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df19.drop(columns=['CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df20.drop(columns=['CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df21.drop(columns=['CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+df22.drop(columns=['CIUOHOM', 'CIUOMUJ', 'NUNUHO', 'NUNUMU', 'PUEHOM', 'PUEMUJ'],inplace=True)
+
+
+df12['AÑOOCU'] = 2012
+df13['AÑOOCU'] = 2013
+df14['AÑOOCU'] = 2014
+df15['AÑOOCU'] = 2015
+df16['AÑOOCU'] = 2016
+df17['AÑOOCU'] = 2017
+df18['AÑOOCU'] = 2018
+
 #Verificación de la cantidad de variables dentro de cada dataframe
-#Todas se comparan en base a la primera (2015)
+#Todas se comparan en base a la primera (2012)
 base_cols = df12.columns   
 
 #Recorrido para compara que se tengan las mismas columnas entre los dataframes 
@@ -51,4 +72,6 @@ for year, df in dataframes.items():
 
 #Todas las columnas son iguales
 
+#Concatenar todos los df individuales
+df_final = pandas.concat(dataframes.values(), ignore_index=True)
 
