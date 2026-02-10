@@ -75,3 +75,5 @@ for year, df in dataframes.items():
 #Concatenar todos los df individuales
 df_final = pandas.concat(dataframes.values(), ignore_index=True)
 
+
+
