@@ -36,7 +36,7 @@ Contiene funciones para:
 - Matriz de correlación
 - Visualización de variables categóricas
 
-📄 clustering.py
+## clustering.py
 - Preprocesamiento con Pipeline
 - OneHotEncoding
 - Escalamiento
@@ -54,6 +54,7 @@ Contiene funciones para:
 - Seaborn
 - Matplotlib
 - Siikit-learn
+
 
 
 
