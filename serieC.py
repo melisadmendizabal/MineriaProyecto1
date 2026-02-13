@@ -1,7 +1,7 @@
-from proyecto import df_final, cols_cat,cols_num, pandas
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
+
 def edad_por_tipo_union(df, edad_col, tipo_union_col='CLAUNI'):
     
     datos = df[[edad_col, tipo_union_col]].dropna()
@@ -16,8 +16,7 @@ def edad_por_tipo_union(df, edad_col, tipo_union_col='CLAUNI'):
     print(resumen.round(2))
     return resumen
 
-edad_por_tipo_union(df_final, 'EDADMUJ')
-edad_por_tipo_union(df_final, 'EDADHOM')
+
 
 def boxplot_edad_tipo_union(df, edad_col, tipo_union_col='CLAUNI'):
     
@@ -29,8 +28,7 @@ def boxplot_edad_tipo_union(df, edad_col, tipo_union_col='CLAUNI'):
     plt.title(f'{edad_col} por Tipo de Unión')
     plt.tight_layout()
     plt.show()
-boxplot_edad_tipo_union(df_final, 'EDADMUJ')
-boxplot_edad_tipo_union(df_final, 'EDADHOM')
+
 
 
 def grafico_dispersion(df, x_col, y_col, hue=None, 
@@ -67,24 +65,24 @@ def grafico_dispersion(df, x_col, y_col, hue=None,
     return correlacion
 
 
-import numpy as np
+
 
 def analisis_correlaciones(df, columnas, umbral=0.7):
 
-    # 1️⃣ Filtrar solo columnas numéricas y eliminar NA
+    # 1 Filtrar solo columnas numéricas y eliminar NA
     datos = df[columnas].dropna()
 
-    # 2️⃣ Matriz de correlación
+    # 2️Matriz de correlación
     matriz_corr = datos.corr()
 
-    # 3️⃣ Heatmap
+    # 3️ Heatmap
     plt.figure(figsize=(8,6))
     sns.heatmap(matriz_corr, annot=True, cmap="coolwarm", fmt=".2f")
     plt.title("Matriz de Correlación")
     plt.tight_layout()
     plt.show()
 
-    # 4️⃣ Detectar correlaciones fuertes
+    # 4️ Detectar correlaciones fuertes
     print(f"\nCorrelaciones fuertes (|r| >= {umbral}):\n")
 
     fuertes = []
@@ -108,8 +106,6 @@ def analisis_correlaciones(df, columnas, umbral=0.7):
     return matriz_corr
 
 
-matriz = analisis_correlaciones(df_final, cols_num, umbral=0.5)
-
 
 def grafico_barras_categorica(df, columna, top_n=None, titulo=None):
 
@@ -128,52 +124,8 @@ def grafico_barras_categorica(df, columna, top_n=None, titulo=None):
 
     print((freq.round(2)).astype(str) + "%")
 
-grafico_barras_categorica(
-    df_final,
-    'CLAUNI',
-    titulo="Distribución del Régimen Económico"
-)
-
-grafico_barras_categorica(
-    df_final,
-    'ESCHOM',
-    titulo="Distribución del Escolaridad en Hombres"
-)
-
-grafico_barras_categorica(
-    df_final,
-    'ESCMUJ',
-    titulo="Distribución del Escolaridad en Mujeres"
-)
 
 
-grafico_dispersion(
-    df_final,
-    'AÑOOCU',
-    'EDADMUJ',
-    titulo="Edad Mujer vs Año de Ocurrencia"
-)
 
-grafico_dispersion(
-    df_final,
-    'CLAUNI',
-    'EDADMUJ',
-    titulo="Edad Mujer vs Año de Ocurrencia"
-)
-
-
-grafico_dispersion(
-    df_final,
-    'EDADHOM',
-    'EDADMUJ',
-    titulo="Edad Hombre vs Edad Mujer"
-)
-
-grafico_dispersion(
-    df_final,
-    'AÑOOCU',
-    'EDADHOM',
-    titulo="Edad Hombre vs Año de Ocurrencia"
-)
 
 
