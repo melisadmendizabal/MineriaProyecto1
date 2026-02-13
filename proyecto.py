@@ -212,7 +212,7 @@ while menu != "0":
     print("A continuación se muestran opciones para verificar el análisis de datos:")
     print("1. Estadística descriptiva y forma de distribución")
     print("2. Gráficos Numéricos")
-    print("3. Graficos de barras vaiables categoricas")
+    print("3. Graficos de barras variables categoricas")
     print("4. Cruce de variables")
     print("5. Graficos de dispersión")
     print("6. Matriz de correlacion")
@@ -254,9 +254,10 @@ while menu != "0":
         results_sorted = sorted(results, key=lambda x: x[1])
         print(results_sorted)
         #La que más queda es lognormal. 
+        print("La distribución que más coincide con estos datos es Lognormal")
 
     elif menu == "2":
-        print("La ejecución de esta función es tardada")
+        print("La ejecución de esta función es tardada. Por favor, espere")
         graficasNumericas(df_final, cols_num, cols_cat)
 
     elif menu == "3":
