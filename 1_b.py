@@ -19,10 +19,10 @@ plt.show()
 # En cuanto a la edad, existe un gran sesgo positivo, debido a la presencia de numerables datos atípicos (personas con 50+ años), 
 # los cuales no fueron eliminados, dado que sí pueden existir personas las cuales a esa edad contraigan matrimonio. Se eliminaron 
 # únicamente los datos de 99 de edad, ya que el excel del INE indicaba que dichos datos eran para "no especificado". La gráfica de este,
-# de cierto modo, se asemeja a una logarítmica invertida en Y (quitando el hecho de que la gráfica no empieza en 0, debido a que los 
-# menores de edad no pueden contraer matrimonio). 
+# de cierto modo, se asemeja a una logarítmica invertida en Y (quitando el hecho de que la gráfica no empieza en 0
 
 boxplot_numericos = ['EDADHOM', 'EDADMUJ']
+print("Estadística descriptiva general para edades de mujeres y hombres ",df_final[cols_num].describe())
 for col in boxplot_numericos:
     plt.figure(figsize=(8,2))
     sns.boxplot(x=df_final[col])

@@ -1,6 +1,7 @@
 import pandas
 import unicodedata
-
+import numpy as np
+from scipy import stats
 
 print("Proyecto 1 - Mineria de datos")
 print("Melisa Mendizabal - Renato Rojas")
@@ -193,3 +194,30 @@ resumen = pandas.DataFrame({
 # print(outliers['EDADMUJ'].describe())
 df_final = df_final[df_final['EDADHOM'] != 99]
 df_final = df_final[df_final['EDADMUJ'] != 99]
+
+#Estadística descriptiva y forma de distribución
+print("Asimetría: ")
+print(df_final[['EDADHOM', 'EDADMUJ']].skew())
+print("Curtosis: ")
+print(df_final[['EDADHOM', 'EDADMUJ']].kurt())
+
+
+data = df_final['EDADMUJ'].dropna() #Se hace para mujer, ya que es muy similar a los datos de hombre, por lo que aplica para ambos
+distributions = {
+    "Normal": stats.norm,
+    "Gamma": stats.gamma,
+    "Lognormal": stats.lognorm,
+    "Exponential": stats.expon,
+    "Weibull": stats.weibull_min
+}
+results = []
+for name, dist in distributions.items():
+    params = dist.fit(data)
+    loglik = np.sum(dist.logpdf(data, *params))
+    k = len(params)
+    aic = 2*k - 2*loglik
+    results.append((name, aic))
+
+results_sorted = sorted(results, key=lambda x: x[1])
+print(results_sorted)
+#La que más queda es lognormal. 
